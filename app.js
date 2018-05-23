@@ -1,16 +1,16 @@
 const mysql = require('mysql');
-const conn = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'shoyanet.com',
   user: 'odluvdyi_admin',
-  password: 'I@mCre0le4Life'
+  password: 'I@mCre0le4Life',
+  database: 'odluvdyi_shasha'
 });
- conn.connect((err) => {
-   if (err) {
-     console.log("Error connecting");
-     return;
-   }
-   console.log("Connection good!");
- });
- conn.end((err) => {
-
- });
+connection.connect();
+connection.query('SELECT * FROM wp_users WHERE id=2',function (err, rows, fields){
+  if (!err) {
+    console.log(rows);
+  } else {
+    console.log(err);
+  }
+});
+connection.end();
